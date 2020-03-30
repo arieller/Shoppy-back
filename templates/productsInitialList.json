@@ -1,0 +1,18 @@
+{
+    "item" : {
+        "title" : "",
+        "description" : "",
+        "price" : 0,
+        "rating" : 0,
+        "pictures" : {
+            "pic1" : "",
+            "pic2" : "",
+            "pic3" : ""
+        },
+        "itemType": "",
+        "featured" : false,
+        "partOfCollection" : "",
+        "gender" : "",
+        "onSale" : "false"
+    }
+}
