@@ -8,7 +8,6 @@ const Product = mongoose.model("Product", {
   },
   description: {
     type: String,
-    required: true,
     trim: true
   },
   price: {
@@ -18,7 +17,6 @@ const Product = mongoose.model("Product", {
   },
   rating: {
     type: Number,
-    required: true,
     trim: true
   },
   pictures: {
@@ -43,7 +41,6 @@ const Product = mongoose.model("Product", {
   },
   featured: {
     type: Boolean,
-    required: true,
     trim: true
   },
   partOfCollection: {
@@ -56,7 +53,6 @@ const Product = mongoose.model("Product", {
   },
   onSale: {
     type: Boolean,
-    required: true,
     trim: true
   }
 });

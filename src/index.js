@@ -14,6 +14,12 @@ app.listen(port, () => {
 });
 
 app.post("/signup", (req, res) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(422).send({ error: "must provide email and password" });
+  }
+
   const user = new User(req.body);
 
   user
@@ -26,10 +32,41 @@ app.post("/signup", (req, res) => {
     });
 });
 
-app.post("/signin", (req, res) => {});
+app.post("/signin", async (req, res) => {
+  const { email, password } = req.body;
 
-app.post("/writeProducts", (req, res) => {});
+  if (!email || !password) {
+    return res.status(422).send({ error: "must provide email and password" });
+  }
 
-app.get("/", (req, res) => {
-  res.status(200).send("hola senior");
+  const user = await User.findOne({ email });
+
+  if (!user) {
+    return res.status(422).send({ error: "invalid password or email" });
+  }
 });
+
+// app.post("/writeProducts", (req, res) => {
+//   const products = req.body;
+//   try {
+//     new Promise((resolve, reject) => {
+//       for (const product in products) {
+//         const newProduct = new Product(products[product]);
+
+//         newProduct.save();
+//       }
+
+//       resolve();
+//     })
+//       .then(() => {
+//         res.status(201).send("Product/s saved.");
+//       })
+//       .catch(err => {
+//         console.log("ERROR while saving new products " + err);
+//         res.status(500);
+//       });
+//   } catch (err) {
+//     console.log("ERRORR on outer catch while saving products " + err);
+//     res.status(500);
+//   }
+// });
