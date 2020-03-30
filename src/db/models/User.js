@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const User = mongoose.model("User", {
+const userSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
@@ -12,5 +12,15 @@ const User = mongoose.model("User", {
     trim: true
   }
 });
+
+userSchema.pre("save", async function(next) {
+  const user = this;
+
+  console.log("just before saving");
+
+  next();
+});
+
+const User = mongoose.model("User", userSchema);
 
 module.exports = User;
